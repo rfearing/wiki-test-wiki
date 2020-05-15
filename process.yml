@@ -1,0 +1,58 @@
+version: 2
+jobs:
+  build:
+    docker:
+    - image: circleci/node
+    steps:
+    - checkout
+    - run:
+        name: Push Wiki To Project Wiki
+        command: |
+          git config user.email "${GITHUB_EMAIL}"
+          git config user.name "${CIRCLE_USERNAME}"
+          git remote remove origin
+          git remote add origin https://${CIRCLE_USERNAME}:${GITHUB_API_KEY}@github.com/rfearing/wiki-test.wiki.git > /dev/null 2>&1
+          git remote add upstream https://${CIRCLE_USERNAME}:${GITHUB_API_KEY}@github.com/rfearing/wiki-test.wiki.git > /dev/null 2>&1
+          git push origin HEAD:master > /dev/null 2>&1
+          git push upstream HEAD:master > /dev/null 2>&1
+workflows:
+  main:
+    jobs:
+    - build:
+        filters:
+          branches:
+            only: master
+  version: 2
+
+# Original config.yml file:
+# version: 2.1
+# description: Automatically build and push to your GitHub Repo Wiki
+# 
+# environment:
+#   GITHUB_API_KEY: 3bb28cb3f5191fae45f2cb798eec6461932d7984
+#   CIRCLE_USERNAME: 'rfearing'
+#   GITHUB_EMAIL: 'ricardofearing@gmail.com'
+# jobs:
+#   build:
+#     docker:
+#       - image: circleci/node
+#     steps:
+#       - checkout
+#       - run:
+#           name: Push Wiki To Project Wiki
+#           command: |
+#             git config user.email \"${GITHUB_EMAIL}\"
+#             git config user.name \"${CIRCLE_USERNAME}\"
+#             git remote remove origin
+#             git remote add origin https://${CIRCLE_USERNAME}:${GITHUB_API_KEY}@github.com/rfearing/wiki-test.wiki.git > /dev/null 2>&1
+#             git remote add upstream https://${CIRCLE_USERNAME}:${GITHUB_API_KEY}@github.com/rfearing/wiki-test.wiki.git > /dev/null 2>&1
+#             git push origin HEAD:master > /dev/null 2>&1
+#             git push upstream HEAD:master > /dev/null 2>&1
+# 
+# workflows:
+#   main:
+#     jobs:
+#       - build:
+#           filters:
+#             branches:
+#               only: master
