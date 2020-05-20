@@ -76,4 +76,4 @@ in the `config.yml` file to allow for rewriting history.
 <p><img alt="Screenshot of adding circleCI project" src="images/circle-ci.png"></p>
 
 **GitHub Personal Access Token:**
-<p><img alt="Screenshot of adding personal access token" src="images/circle-ci.png"></p>
+<p><img alt="Screenshot of adding personal access token" src="images/github-repo.png"></p>
