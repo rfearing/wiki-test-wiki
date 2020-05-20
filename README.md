@@ -1,6 +1,6 @@
 # GitHub Wiki circle**ci** Integration Example.
 
-This is a proof of concept. GitHub Wikis are great. According to GitHub:
+This is a proof of concept. The current repo controls [this repo's wiki page](https://github.com/rfearing/wiki-test). GitHub Wikis are great. According to GitHub:
 
 >  - README files are a quick and simple way for other users to learn more about your work.
 >  - Wikis on GitHub help you present in-depth information about your project in a useful way.
